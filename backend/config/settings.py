@@ -29,6 +29,7 @@ SECRET_KEY = 'django-insecure-3w=e9m&aa-#e(q(oshb^b!a1tys52=-b+^1v%ns!$lv^d3%3w2
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173"]
 
 
 # Application definition
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "rest_framework_simplejwt.token_blacklist",
     'corsheaders',
     'accounts',
     'leads',
