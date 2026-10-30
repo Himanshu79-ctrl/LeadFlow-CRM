@@ -1,4 +1,3 @@
-
 from rest_framework import serializers
 from .models import Lead
 
@@ -21,8 +20,17 @@ class LeadSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ["id", "created_at", "updated_at"]
 
+    def validate_email(self, value):
+        return value.strip().lower()
+
+    def validate_budget(self, value):
+        if value is not None and value < 0:
+            raise serializers.ValidationError(
+                "Budget cannot be negative."
+            )
+        return value
+
     def validate(self, attrs):
-        # Update mein existing values ko bhi consider karna hai.
         name = attrs.get(
             "name",
             getattr(self.instance, "name", "")
