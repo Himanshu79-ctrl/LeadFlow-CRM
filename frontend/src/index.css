@@ -1,4 +1,6 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   box-sizing: border-box;
 }
@@ -1322,3 +1324,4 @@ a.sidebar-link {
     padding: 16px;
   }
 }
+
