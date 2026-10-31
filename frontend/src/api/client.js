@@ -28,6 +28,27 @@ api.interceptors.request.use((config) => {
 
   return config;
 });
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error.response?.status;
+    const url = error.config?.url || "";
+
+    const isAuthRoute =
+      url.includes("/auth/login") ||
+      url.includes("/auth/register");
+
+    if (status === 401 && !isAuthRoute) {
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+      localStorage.removeItem("user");
+
+      window.location.href = "/login";
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 
 export default api;

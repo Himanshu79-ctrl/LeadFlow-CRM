@@ -11,6 +11,7 @@ import {
   LogOut,
   LayoutDashboard,
   BriefcaseBusiness,
+  Workflow,
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import api from "../api/client";
@@ -80,7 +81,7 @@ export default function Dashboard() {
       <aside className="crm-sidebar">
         <div className="brand">
           <div className="brand-icon">
-            <BriefcaseBusiness size={23} />
+            <Workflow size={22} className="text-white" />
           </div>
           <span>LeadFlow</span>
         </div>
